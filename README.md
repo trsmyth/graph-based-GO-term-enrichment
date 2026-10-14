@@ -13,23 +13,23 @@ Specifically, this data are DE results from macrophages polarized with interfero
   <img width="1000" alt="image" src="https://github.com/user-attachments/assets/9e5d2dcc-467c-42c5-95b2-3c144ecd71fa" />
 </p>
 
-A new graph is formed which links enriched terms to all known ancestors, producing clusters of enrichment which can be assessed for latent themes.  
-  <br>
+A new graph is formed which links enriched terms to all known ancestors, producing clusters of enrichment which can be assessed for latent themes.
+<br>
 <p align="center">
   <img width="500" alt="image" src="https://github.com/user-attachments/assets/9a297476-c325-4d67-8b75-e1f0bdfe4fc9" />
 </p>
 
 Terms within each cluster are isolated and the step distance between significant GSEA terms and all possible ancestors are assessed. Ancestor term enrichment is assessed using a weighted score with the following formula:  
 
-<div align="center">
-  \$`\text{IC score} \times \text{NES} \times \exp\left(-\frac{(\text{distance} - 1)^2}{2\sigma^2}\right)`\$
-</div>
+<p align="center">
+  <img width="375" alt="image" src="https://github.com/user-attachments/assets/f6a65623-ad10-485c-88ee-5798ff8b7912" />
+</p>
+
+**IC score** = GSEA term information content score (higher is a more specific term)
 <br>
-- IC score = GSEA term information content score (higher is a more specific term)
+**NES** = normalized enrichment score
 <br>
-- NES = normalized enrichment score
-<br>
-- Gaussian kernel decay is utilized where distance is the step distance between the significant GSEA term and the current ancestor. Sigma is set to 1 and distance is subtracted by 1 to ensure direct parent-child relationships have a weight of 1.
+**Gaussian kernel decay** is utilized where distance is the step distance between the significant GSEA term and the current ancestor. Sigma is set to 1 and distance is subtracted by 1 to ensure direct parent-child relationships have a weight of 1.
 <br><br>
 Weighted scores are assessed for every significant GSEA term within the cluster with each potential ancestor within the cluster (where no connections are set to 0) and enriched ancestor terms are selected based on the top n summed scores. The selected ancestor terms can then be assessed by GSEA as well and graphed based on cluster to identify latent themes within the data.
 <br><br>
